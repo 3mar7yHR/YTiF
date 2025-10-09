@@ -1,108 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Watch & Get Code</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: #f5f5f5;
-      padding: 50px;
-    }
-    #player {
-      margin: 20px auto;
-    }
-    #getCode {
-      padding: 12px 25px;
-      font-size: 18px;
-      border: none;
-      border-radius: 5px;
-      background: gray;
-      color: white;
-      transition: background 0.3s;
-      cursor: pointer;
-    }
-    #getCode.active {
-      background: green;
-    }
-    #message {
-      color: red;
-      font-weight: bold;
-      margin-top: 15px;
-    }
-  </style>
-
-  <!-- إعلان مقطعي (PropellerAds/Monetag) -->
-  <script>(function(s){s.dataset.zone='9959827',s.src='https://groleegni.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>3mar Network — Home</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">3M</span><span class="brand-text">3mar Network</span></div>
+    <button id="menuBtn" class="menu-btn" aria-label="Open menu">☰</button>
+  </header>
+  <aside id="sideMenu" class="side-menu" aria-hidden="true">
+    <button id="closeMenu" class="close-menu" aria-label="Close menu">✕</button>
+    <nav><ul><li><a href="index.html">🏠 Home</a></li><li><a href="top5_movies&tvshos_apps.html">🎞 Top 5</a></li><li><a href="request.html">✉️ Request</a></li><li><a href="donate.html">💖 Donate</a></li><li><a href="contact.html">📞 Contact</a></li></ul></nav>
+  </aside>
+  <main class="container">
+    <article class="hero card"><h1>Welcome to 3mar Network</h1><p class="lead">A friendly hub for the best free streaming apps, creator tools and how-to guides.</p></article>
+    <section class="card topics"><h2>Topics on this site</h2><div class="topics-grid">
+      <a class="topic-card" href="top5_movies&tvshos_apps.html"><div class="topic-title">Top 5 Free Movie & TV Apps</div><div class="topic-desc">Official downloads, tips and more.</div></a>
+      <a class="topic-card" href="top5_movies&tvshos_apps.html" aria-label="Featured"><div class="ad-slot native">
+<script async="async" data-cfasync="false" src="//timesmonarchcivil.com/c558586c5e38f6062f6f6dabbe8ea39f/invoke.js"></script>
+<div id="container-c558586c5e38f6062f6f6dabbe8ea39f"></div>
 
-  <h2>Watch the video to unlock your code</h2>
-
-  <!-- YouTube video -->
-  <div id="player"></div>
-
-  <!-- Button -->
-  <button id="getCode">Get Code</button>
-
-  <p id="message"></p>
-
-  <!-- YouTube Iframe API -->
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script>
-    let player;
-    let watchTime = 0;
-    let watchInterval;
-    const requiredTime = 6; // seconds
-    const button = document.getElementById("getCode");
-    const message = document.getElementById("message");
-
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        height: '360',
-        width: '640',
-        videoId: '05gBJjyt124', // ضع ID الفيديو
-        events: {
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
-
-    function onPlayerStateChange(event) {
-      if (event.data === YT.PlayerState.PLAYING) {
-        if (!watchInterval) {
-          watchInterval = setInterval(() => {
-            watchTime++;
-            if (watchTime >= requiredTime) {
-              clearInterval(watchInterval);
-              button.classList.add("active");
-            }
-          }, 1000);
-        }
-      } else {
-        clearInterval(watchInterval);
-        watchInterval = null;
-      }
-    }
-
-    button.addEventListener("click", () => {
-      if (watchTime < requiredTime) {
-        message.textContent = "⚠️ You must watch at least 1 minute before getting the code.";
-      } else {
-        message.textContent = "";
-
-        // استدعاء الإعلان المقطعي (إن توفر)
-        if (typeof invokeInterstitial === "function") {
-          invokeInterstitial();
-        }
-
-        // إعادة التوجيه بعد 3 ثوانٍ
-        setTimeout(() => {
-          window.location.href = "code.html";
-        }, 3000);
-      }
-    });
-  </script>
+      </div></a>
+      <a class="topic-card" href="thumbnails.html"><div class="topic-title">How to Make Thumbnails That Click</div><div class="topic-desc">Templates & tips.</div></a>
+    </div></section>
+    <footer class="site-footer"><div>© 3mar Network • 2025</div><div class="links"><a href="privacy.html">Privacy</a> • <a href="terms.html">Terms</a></div></footer>
+  </main>
 </body>
 </html>
